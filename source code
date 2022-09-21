@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+void print(int arr[],int s,int e){
+    for(int i=s;i<=e;i++){
+        cout<< arr[i]<< " ";
+    }
+    cout<<endl;
+}
+bool bs(int arr[],int s,int e,int k){
+    print(arr,s,e);
+    if(s>e){
+        return false;
+    }
+    int mid=s+(e-s)/2;
+    cout<< "the value of mid  " << arr[mid] << endl;
+    if(arr[mid]==k){
+        return true;
+    }
+    if(arr[mid]<k){
+        return bs(arr,mid+1,e,k);
+    }
+    else{
+        return bs(arr,s,mid-1,k);
+    }
+}
+int main()
+{
+    int arr[5]={2,4,6,8,10};
+    int size=5,k=10;
+    bool ans=bs(arr,0,4,k);
+    if(ans)
+    {
+      cout<<"present" << endl;
+    }
+    else{
+        cout<<"Absent" <<  endl;
+    }
+return 0;
+}
